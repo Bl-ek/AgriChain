@@ -83,86 +83,86 @@ export function Dashboard() {
     <MainLayout>
       <div className="space-y-8">
         {/* Header with Action Buttons */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-gray-600 mt-1">Live warehouse overview.</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Dashboard</h1>
+            <p className="text-gray-600 mt-1 text-sm md:text-base">Live warehouse overview.</p>
           </div>
-          <div className="flex gap-3">
-            <button className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <button className="px-4 sm:px-6 py-2 sm:py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all text-sm md:text-base">
               New dispatch
             </button>
-            <button className="px-6 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all">
+            <button className="px-4 sm:px-6 py-2 sm:py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all text-sm md:text-base">
               Add produce
             </button>
           </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-4 gap-6">
+        {/* Stats Grid - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {/* Total Stock - Prominent Green Card */}
-          <div className="col-span-1 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-green-100 text-sm font-semibold uppercase tracking-wide">Total Stock</p>
-                <p className="text-5xl font-bold mt-3">{totalStock.toLocaleString()}</p>
-                <p className="text-green-100 text-sm mt-1">kg</p>
-                <p className="text-green-100 text-xs mt-4">{totalBatches} batches</p>
+          <div className="sm:col-span-1 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-green-100 text-xs md:text-sm font-semibold uppercase tracking-wide">Total Stock</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 sm:mt-3">{totalStock.toLocaleString()}</p>
+                <p className="text-green-100 text-xs md:text-sm mt-1">kg</p>
+                <p className="text-green-100 text-xs mt-3 sm:mt-4">{totalBatches} batches</p>
               </div>
-              <div className="bg-white/20 rounded-full p-3">
-                <Package size={28} className="text-white" />
+              <div className="bg-white/20 rounded-full p-2 sm:p-3 flex-shrink-0">
+                <Package size={24} className="text-white" />
               </div>
             </div>
           </div>
 
           {/* Produce Types */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">Produce Types</p>
-                <p className="text-4xl font-bold text-gray-900 mt-3">{totalBatches}</p>
-                <p className="text-gray-600 text-xs mt-4">Distinct items</p>
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-gray-600 text-xs md:text-sm font-semibold uppercase tracking-wide">Produce Types</p>
+                <p className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 sm:mt-3">{totalBatches}</p>
+                <p className="text-gray-600 text-xs mt-3 sm:mt-4">Distinct items</p>
               </div>
-              <div className="bg-green-50 rounded-full p-3">
-                <Layers size={24} className="text-green-600" />
+              <div className="bg-green-50 rounded-full p-2 sm:p-3 flex-shrink-0">
+                <Layers size={22} className="text-green-600" />
               </div>
             </div>
           </div>
 
           {/* Low Stock Alerts */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">Low Stock</p>
-                <p className="text-4xl font-bold text-gray-900 mt-3">{lowStockAlerts.length}</p>
-                <p className="text-gray-600 text-xs mt-4">Below 50 kg</p>
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-gray-600 text-xs md:text-sm font-semibold uppercase tracking-wide">Low Stock</p>
+                <p className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 sm:mt-3">{lowStockAlerts.length}</p>
+                <p className="text-gray-600 text-xs mt-3 sm:mt-4">Below 50 kg</p>
               </div>
-              <div className="bg-amber-50 rounded-full p-3">
-                <AlertCircle size={24} className="text-amber-600" />
+              <div className="bg-amber-50 rounded-full p-2 sm:p-3 flex-shrink-0">
+                <AlertCircle size={22} className="text-amber-600" />
               </div>
             </div>
           </div>
 
           {/* Recent Dispatches */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-gray-600 text-sm font-semibold uppercase tracking-wide">Dispatches</p>
-                <p className="text-4xl font-bold text-gray-900 mt-3">{recentDispatches.length}</p>
-                <p className="text-gray-600 text-xs mt-4">Last 5 shipments</p>
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-gray-600 text-xs md:text-sm font-semibold uppercase tracking-wide">Dispatches</p>
+                <p className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 sm:mt-3">{recentDispatches.length}</p>
+                <p className="text-gray-600 text-xs mt-3 sm:mt-4">Last 5 shipments</p>
               </div>
-              <div className="bg-blue-50 rounded-full p-3">
-                <Truck size={24} className="text-blue-600" />
+              <div className="bg-blue-50 rounded-full p-2 sm:p-3 flex-shrink-0">
+                <Truck size={22} className="text-blue-600" />
               </div>
             </div>
           </div>
         </div>
 
         {/* Sections */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {/* Low Stock Alerts Section */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 sm:mb-5 flex items-center gap-2">
               <div className="bg-amber-100 rounded-full p-2">
                 <AlertCircle size={18} className="text-amber-700" />
               </div>
@@ -171,9 +171,9 @@ export function Dashboard() {
             {lowStockAlerts.length > 0 ? (
               <div className="space-y-4">
                 {lowStockAlerts.map((alert) => (
-                  <div key={alert.name} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0">
-                    <span className="text-gray-700 font-medium">{alert.name}</span>
-                    <span className="text-xs font-bold text-amber-700 bg-amber-100 px-3 py-1.5 rounded-full">
+                  <div key={alert.name} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 gap-2">
+                    <span className="text-sm sm:text-base text-gray-700 font-medium truncate">{alert.name}</span>
+                    <span className="text-xs font-bold text-amber-700 bg-amber-100 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full flex-shrink-0">
                       {alert.totalQuantity} kg
                     </span>
                   </div>
@@ -187,8 +187,8 @@ export function Dashboard() {
           </div>
 
           {/* Recent Dispatches Section */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+          <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4 sm:mb-5 flex items-center gap-2">
               <div className="bg-blue-100 rounded-full p-2">
                 <Truck size={18} className="text-blue-700" />
               </div>
@@ -197,12 +197,12 @@ export function Dashboard() {
             {recentDispatches.length > 0 ? (
               <div className="space-y-4">
                 {recentDispatches.slice(0, 3).map((dispatch) => (
-                  <div key={dispatch.id} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0">
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">{dispatch.batch_number}</p>
-                      <p className="text-xs text-gray-500 mt-1">{dispatch.destination}</p>
+                  <div key={dispatch.id} className="flex items-center justify-between pb-3 border-b border-gray-100 last:border-0 gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm font-semibold text-gray-900 truncate">{dispatch.batch_number}</p>
+                      <p className="text-xs text-gray-500 mt-1 truncate">{dispatch.destination}</p>
                     </div>
-                    <span className="text-sm font-bold text-gray-700 bg-gray-100 px-3 py-1.5 rounded-full">{dispatch.quantity} kg</span>
+                    <span className="text-xs sm:text-sm font-bold text-gray-700 bg-gray-100 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full flex-shrink-0">{dispatch.quantity} kg</span>
                   </div>
                 ))}
               </div>
