@@ -87,26 +87,26 @@ export function Reports() {
 
   return (
     <MainLayout breadcrumb={['Reports', 'Analytics']}>
-      <div className="space-y-8 md:space-y-10">
+      <div className="space-y-6 sm:space-y-8 md:space-y-10">
         {/* Stock Summary */}
-        <div>
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Stock Summary</h2>
+        <div className="px-4 sm:px-0">
+          <div className="mb-3 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Stock Summary</h2>
             <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               {stockSummary.length} produce types tracked
             </p>
           </div>
 
           {stockSummary.length > 0 ? (
-            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-              <table className="w-full">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-x-auto shadow-sm">
+              <table className="w-full text-xs sm:text-sm">
                 <thead>
                   <tr className={`border-b ${isDark ? 'border-gray-700/30' : 'border-gray-200/50'}`}>
-                    <th className={`px-6 py-4 text-left text-sm font-bold uppercase tracking-wider flex items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      <Package size={16} /> Produce
+                    <th className={`px-3 sm:px-6 py-2.5 sm:py-4 text-left font-bold uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <Package size={14} className="sm:w-4 sm:h-4" /> Produce
                     </th>
-                    <th className={`px-6 py-4 text-left text-sm font-bold uppercase tracking-wider flex items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      <Scale size={16} /> Total
+                    <th className={`px-3 sm:px-6 py-2.5 sm:py-4 text-left font-bold uppercase tracking-wider flex items-center gap-1.5 sm:gap-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <Scale size={14} className="sm:w-4 sm:h-4" /> Total
                     </th>
                   </tr>
                 </thead>
@@ -120,37 +120,37 @@ export function Reports() {
                           : 'border-gray-200/30 hover:bg-gray-100/50'
                       }`}
                     >
-                      <td className={`px-6 py-4 text-sm font-semibold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
+                      <td className={`px-3 sm:px-6 py-2.5 sm:py-4 font-semibold truncate ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
                         {item.name}
                       </td>
-                      <td className="px-6 py-4 text-sm font-bold text-green-600">{item.total} kg</td>
+                      <td className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-green-600 whitespace-nowrap">{item.total} kg</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           ) : (
-            <div className="bg-white border border-gray-200 rounded-2xl py-12 text-center shadow-sm">
-              <p className={`text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No data yet</p>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-8 sm:py-12 px-4 text-center shadow-sm">
+              <p className={`text-sm sm:text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No data yet</p>
             </div>
           )}
         </div>
 
         {/* Transaction History */}
-        <div>
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Transaction History</h2>
+        <div className="px-4 sm:px-0">
+          <div className="mb-3 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Transaction History</h2>
             <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               {transactionHistory.length} transactions recorded
             </p>
           </div>
 
           {transactionHistory.length > 0 ? (
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
               {transactionHistory.map((tx) => (
                 <div
                   key={`${tx.type}-${tx.id}`}
-                  className={`rounded-xl border backdrop-blur-md p-4 transition-all hover:shadow-lg ${
+                  className={`rounded-lg sm:rounded-xl border p-3 sm:p-4 transition-all hover:shadow-lg ${
                     tx.type === 'RECEIVED'
                       ? isDark
                         ? 'bg-green-950/30 border-green-700/40 hover:bg-green-950/50'
@@ -160,22 +160,22 @@ export function Reports() {
                       : 'bg-red-100/40 border-red-200/60 hover:bg-red-100/60'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+                    <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-1 min-w-0">
                       {tx.type === 'RECEIVED' ? (
-                        <ArrowDownRight size={24} className="text-green-600" />
+                        <ArrowDownRight size={18} className="sm:w-6 sm:h-6 text-green-600 flex-shrink-0" />
                       ) : (
-                        <ArrowUpRight size={24} className="text-red-600" />
+                        <ArrowUpRight size={18} className="sm:w-6 sm:h-6 text-red-600 flex-shrink-0" />
                       )}
-                      <div className="flex-1">
-                        <p className={`font-semibold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-xs sm:text-sm font-semibold truncate ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
                           {tx.batch} {tx.name && `- ${tx.name}`}
                         </p>
                         <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{tx.detail}</p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className={`font-bold text-lg ${tx.type === 'RECEIVED' ? 'text-green-600' : 'text-red-600'}`}>
+                    <div className="text-right flex-shrink-0">
+                      <p className={`font-bold text-sm sm:text-base ${tx.type === 'RECEIVED' ? 'text-green-600' : 'text-red-600'}`}>
                         {tx.quantity} kg
                       </p>
                       <p className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>
@@ -187,27 +187,27 @@ export function Reports() {
               ))}
             </div>
           ) : (
-            <div className="bg-white border border-gray-200 rounded-2xl py-12 text-center shadow-sm">
-              <p className={`text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No transactions yet</p>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-8 sm:py-12 px-4 text-center shadow-sm">
+              <p className={`text-sm sm:text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No transactions yet</p>
             </div>
           )}
         </div>
 
         {/* Blockchain Ledger */}
-        <div>
-          <div className="mb-4 sm:mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Blockchain Ledger</h2>
+        <div className="px-4 sm:px-0">
+          <div className="mb-3 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Blockchain Ledger</h2>
             <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               Immutable audit trail • {blockchainLedger.length} blocks
             </p>
           </div>
 
           {blockchainLedger.length > 0 ? (
-            <div className="space-y-2 sm:space-y-3">
+            <div className="space-y-1.5 sm:space-y-2 md:space-y-3">
               {blockchainLedger.map((block) => (
                 <div
                   key={block.id}
-                  className={`rounded-xl border backdrop-blur-md p-4 transition-all ${
+                  className={`rounded-lg sm:rounded-xl border p-3 sm:p-4 transition-all ${
                     block.isIntact
                       ? isDark
                         ? 'bg-green-950/30 border-green-700/40'
@@ -217,14 +217,14 @@ export function Reports() {
                       : 'bg-red-100/40 border-red-200/60'
                   }`}
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <LinkIcon size={20} className={isDark ? 'text-gray-400' : 'text-gray-600'} />
-                      <span className={`text-lg font-bold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                      <LinkIcon size={16} className="sm:w-5 sm:h-5 flex-shrink-0" style={{color: isDark ? '#9ca3af' : '#4b5563'}} />
+                      <span className={`text-base sm:text-lg font-bold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
                         Block #{block.block_index}
                       </span>
                       <span
-                        className={`text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 ${
+                        className={`text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex items-center gap-0.5 flex-shrink-0 ${
                           block.isIntact
                             ? isDark
                               ? 'bg-green-900/60 text-green-200'
@@ -236,36 +236,36 @@ export function Reports() {
                       >
                         {block.isIntact ? (
                           <>
-                            <CheckCircle size={14} /> Verified
+                            <CheckCircle size={12} className="sm:w-3.5 sm:h-3.5" /> Verified
                           </>
                         ) : (
                           <>
-                            <XCircle size={14} /> Broken
+                            <XCircle size={12} className="sm:w-3.5 sm:h-3.5" /> Broken
                           </>
                         )}
                       </span>
                     </div>
                   </div>
-                  <div className={`text-xs space-y-1.5 font-mono ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
-                    <p className="flex items-start gap-2">
-                      <FileText size={14} className="mt-0.5 flex-shrink-0" />
-                      <span><strong>Data:</strong> {block.data}</span>
+                  <div className={`text-xs space-y-0.5 sm:space-y-1 font-mono ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>
+                    <p className="flex items-start gap-1.5 sm:gap-2">
+                      <FileText size={12} className="mt-0.5 flex-shrink-0 sm:w-3.5 sm:h-3.5" />
+                      <span className="truncate"><strong>Data:</strong> {block.data}</span>
                     </p>
-                    <p className="flex items-start gap-2">
-                      <LinkIcon size={14} className="mt-0.5 flex-shrink-0" />
-                      <span><strong>Hash:</strong> {block.hash.substring(0, 20)}...</span>
+                    <p className="flex items-start gap-1.5 sm:gap-2">
+                      <LinkIcon size={12} className="mt-0.5 flex-shrink-0 sm:w-3.5 sm:h-3.5" />
+                      <span className="truncate"><strong>Hash:</strong> {block.hash.substring(0, 16)}...</span>
                     </p>
-                    <p className={`flex items-start gap-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
-                      <Clock size={14} className="mt-0.5 flex-shrink-0" />
-                      <span>{new Date(block.timestamp).toLocaleString()}</span>
+                    <p className={`flex items-start gap-1.5 sm:gap-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+                      <Clock size={12} className="mt-0.5 flex-shrink-0 sm:w-3.5 sm:h-3.5" />
+                      <span className="truncate">{new Date(block.timestamp).toLocaleDateString()}</span>
                     </p>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="bg-white border border-gray-200 rounded-2xl py-12 text-center shadow-sm">
-              <p className={`text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No blockchain data yet</p>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl py-8 sm:py-12 px-4 text-center shadow-sm">
+              <p className={`text-sm sm:text-base ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>No blockchain data yet</p>
             </div>
           )}
         </div>

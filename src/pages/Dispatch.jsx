@@ -92,25 +92,25 @@ export function Dispatch() {
 
   return (
     <MainLayout breadcrumb={['Dispatch', 'Send Produce']}>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className={`text-3xl font-bold ${isDark ? 'text-gray-50' : 'text-gray-900'}`}>Dispatch Produce</h1>
-          <p className={`text-base mt-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+      <div className="max-w-2xl mx-auto px-4 sm:px-0">
+        <div className="mb-6 sm:mb-8">
+          <h1 className={`text-xl sm:text-2xl md:text-3xl font-bold ${isDark ? 'text-gray-50' : 'text-gray-900'}`}>Dispatch Produce</h1>
+          <p className={`text-xs sm:text-sm md:text-base mt-1.5 sm:mt-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
             Ship produce to market or retailers
           </p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-6">
             <div>
-              <label className="block text-xs sm:text-sm font-semibold mb-2 flex items-center gap-2 text-gray-900">
-                <Package size={16} /> Select Batch
+              <label className="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
+                <Package size={14} className="sm:w-4 sm:h-4" /> Select Batch
               </label>
               <select
                 required
                 value={selectedBatch}
                 onChange={(e) => setSelectedBatch(e.target.value)}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-xs sm:text-sm md:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
               >
                 <option value="">Choose a batch...</option>
                 {produce.map((p) => (
@@ -122,16 +122,16 @@ export function Dispatch() {
             </div>
 
             {selectedProduce && (
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50 rounded-xl p-3 sm:p-4">
+              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50 rounded-xl p-2.5 sm:p-3 md:p-4">
                 <p className="text-xs sm:text-sm font-semibold flex items-center gap-2 text-green-700 dark:text-green-400">
-                  <BarChart3 size={18} /> Available: <span className="text-lg font-bold">{selectedProduce.quantity} kg</span>
+                  <BarChart3 size={16} className="sm:w-4 sm:h-4" /> Available: <span className="text-base sm:text-lg font-bold">{selectedProduce.quantity} kg</span>
                 </p>
               </div>
             )}
 
             <div>
-              <label className="block text-sm font-semibold mb-2 flex items-center gap-2 text-gray-900">
-                <Scale size={16} /> Quantity (kg)
+              <label className="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
+                <Scale size={14} className="sm:w-4 sm:h-4" /> Quantity (kg)
               </label>
               <input
                 type="number"
@@ -140,21 +140,21 @@ export function Dispatch() {
                 max={selectedProduce?.quantity}
                 value={dispatchQty}
                 onChange={(e) => setDispatchQty(e.target.value)}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-xs sm:text-sm md:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold mb-2 flex items-center gap-2 text-gray-900">
-                <MapPin size={16} /> Destination
+              <label className="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
+                <MapPin size={14} className="sm:w-4 sm:h-4" /> Destination
               </label>
               <input
                 type="text"
                 required
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 md:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-xs sm:text-sm md:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="Market A, Retailer B..."
               />
             </div>
@@ -162,9 +162,9 @@ export function Dispatch() {
             <button
               type="submit"
               disabled={loading || !selectedBatch}
-              className="w-full py-2.5 sm:py-3 rounded-lg font-bold text-white text-sm sm:text-base transition-all bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-white text-xs sm:text-sm md:text-base transition-all bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {loading ? 'Processing...' : <><Truck size={18} /> Dispatch</>}
+              {loading ? 'Processing...' : <><Truck size={16} className="sm:w-4.5 sm:h-4.5" /> Dispatch</>}
             </button>
           </form>
         </div>
