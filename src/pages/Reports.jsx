@@ -87,12 +87,12 @@ export function Reports() {
 
   return (
     <MainLayout breadcrumb={['Reports', 'Analytics']}>
-      <div className="space-y-10">
+      <div className="space-y-8 md:space-y-10">
         {/* Stock Summary */}
         <div>
-          <div className="mb-6">
-            <h2 className={`text-2xl font-bold ${isDark ? 'text-gray-50' : 'text-gray-900'}`}>Stock Summary</h2>
-            <p className={`text-sm mt-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Stock Summary</h2>
+            <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               {stockSummary.length} produce types tracked
             </p>
           </div>
@@ -138,15 +138,15 @@ export function Reports() {
 
         {/* Transaction History */}
         <div>
-          <div className="mb-6">
-            <h2 className={`text-2xl font-bold ${isDark ? 'text-gray-50' : 'text-gray-900'}`}>Transaction History</h2>
-            <p className={`text-sm mt-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Transaction History</h2>
+            <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               {transactionHistory.length} transactions recorded
             </p>
           </div>
 
           {transactionHistory.length > 0 ? (
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {transactionHistory.map((tx) => (
                 <div
                   key={`${tx.type}-${tx.id}`}
@@ -195,15 +195,15 @@ export function Reports() {
 
         {/* Blockchain Ledger */}
         <div>
-          <div className="mb-6">
-            <h2 className={`text-2xl font-bold ${isDark ? 'text-gray-50' : 'text-gray-900'}`}>Blockchain Ledger</h2>
-            <p className={`text-sm mt-2 ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Blockchain Ledger</h2>
+            <p className="text-xs sm:text-sm mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">
               Immutable audit trail • {blockchainLedger.length} blocks
             </p>
           </div>
 
           {blockchainLedger.length > 0 ? (
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {blockchainLedger.map((block) => (
                 <div
                   key={block.id}

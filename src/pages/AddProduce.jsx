@@ -48,15 +48,15 @@ export function AddProduce() {
   return (
     <MainLayout breadcrumb={['Inventory', 'Add Produce']}>
       <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Register Produce</h1>
-          <p className="text-base mt-2 text-gray-600">Create a new batch and add it to your inventory</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Register Produce</h1>
+          <p className="text-sm sm:text-base mt-1 sm:mt-2 text-gray-600 dark:text-gray-400">Create a new batch and add it to your inventory</p>
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <label className="block text-sm font-semibold mb-2 flex items-center gap-2 text-gray-900">
+              <label className="block text-xs sm:text-sm font-semibold mb-2 flex items-center gap-2 text-gray-900 dark:text-white">
                 <Package size={16} /> Produce Name
               </label>
               <input
@@ -64,7 +64,7 @@ export function AddProduce() {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="Tomatoes, Wheat, Corn..."
               />
             </div>
@@ -79,7 +79,7 @@ export function AddProduce() {
                 min="0"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="1000"
               />
             </div>
@@ -92,7 +92,7 @@ export function AddProduce() {
                 required
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white bg-white dark:bg-gray-700 text-sm sm:text-base transition-all focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
               >
                 <option value="">Select source</option>
                 <option value="Farm">Farm</option>
@@ -103,7 +103,7 @@ export function AddProduce() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-lg font-bold text-white text-base transition-all bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-2.5 sm:py-3 rounded-lg font-bold text-white text-sm sm:text-base transition-all bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Creating batch...' : 'Create Batch'}
             </button>
