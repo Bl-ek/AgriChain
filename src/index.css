@@ -1,1 +1,31 @@
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --tw-bg-opacity: 1;
+}
+
 @import "tailwindcss";
+
+/* Force dark mode when .dark class is present */
+:root.dark {
+  --color-gray-800: rgb(31 41 55);
+  --color-gray-700: rgb(55 65 81);
+  --color-gray-600: rgb(75 85 99);
+  --color-gray-500: rgb(107 114 128);
+  --color-gray-400: rgb(156 163 175);
+  --color-gray-300: rgb(209 213 219);
+  --color-gray-200: rgb(229 231 235);
+  --color-gray-100: rgb(243 244 246);
+  --color-white: rgb(255 255 255);
+  --color-green-700: rgb(21 128 61);
+  --color-green-600: rgb(22 163 74);
+  --color-green-400: rgb(74 222 128);
+  --color-blue-700: rgb(29 78 216);
+  --color-blue-600: rgb(37 99 235);
+  --color-amber-700: rgb(180 83 9);
+  --color-amber-600: rgb(217 119 6);
+  --color-amber-400: rgb(250 191 38);
+}
