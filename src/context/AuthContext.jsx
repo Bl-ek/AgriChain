@@ -34,15 +34,7 @@ export function AuthProvider({ children }) {
   }
 
   const signUp = async (email, password) => {
-    console.log('signUp called with:', email)
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/verify-email`,
-      },
-    })
-    console.log('signUp response - data:', data, 'error:', error)
+    const { data, error } = await supabase.auth.signUp({ email, password })
     if (error) throw error
     return data
   }

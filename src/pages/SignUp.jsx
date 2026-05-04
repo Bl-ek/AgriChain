@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { Leaf, Mail, Lock, CheckCircle } from 'lucide-react'
+import { Leaf, Mail, Lock } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 export function SignUp() {
@@ -9,7 +9,6 @@ export function SignUp() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const [signUpSuccess, setSignUpSuccess] = useState(false)
   const { signUp } = useAuth()
   const navigate = useNavigate()
 
@@ -29,12 +28,10 @@ export function SignUp() {
     setLoading(true)
 
     try {
-      const result = await signUp(email, password)
-      console.log('Sign up result:', result)
-      setSignUpSuccess(true)
-      toast.success('Account created! Check your email to verify.')
+      await signUp(email, password)
+      toast.success('Account created! You can now sign in.')
+      navigate('/login')
     } catch (error) {
-      console.error('Sign up error:', error)
       toast.error(error.message || 'Sign up failed')
       setLoading(false)
     }
@@ -63,38 +60,7 @@ export function SignUp() {
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1.5 sm:mt-2">Create your account</p>
             </div>
 
-            {/* Success Message */}
-            {signUpSuccess ? (
-              <div className="space-y-3 sm:space-y-4 md:space-y-5">
-                <div className="flex justify-center mb-4 sm:mb-6">
-                  <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-full bg-green-100 dark:bg-green-900/30">
-                    <CheckCircle size={32} className="text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-                <div>
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
-                    Account Created!
-                  </h2>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center mb-4">
-                    We've sent a verification email to:
-                  </p>
-                  <p className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white text-center bg-gray-100 dark:bg-gray-700 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 mb-4 break-all">
-                    {email}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center">
-                    Please click the link in your email to verify your account and complete the sign-up process.
-                  </p>
-                </div>
-                <button
-                  onClick={() => navigate('/login')}
-                  className="w-full py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-white text-sm sm:text-base transition-all bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600"
-                >
-                  Back to Login
-                </button>
-              </div>
-            ) : (
-              /* Form */
-              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
                 <div>
                   <label className="block text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1.5 sm:mb-2 flex items-center gap-2">
                     <Mail size={14} className="sm:w-4 sm:h-4" /> Email
@@ -145,17 +111,13 @@ export function SignUp() {
                   {loading ? 'Creating account...' : 'Sign Up'}
                 </button>
               </form>
-            )}
 
-            {/* Footer */}
-            {!signUpSuccess && (
-              <p className="mt-4 sm:mt-5 md:mt-6 text-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 sm:mt-5 md:mt-6 text-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?{' '}
                 <Link to="/login" className="text-green-600 dark:text-green-500 font-semibold hover:underline">
                   Sign In
                 </Link>
               </p>
-            )}
           </div>
         </div>
       </div>
